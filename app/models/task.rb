@@ -6,4 +6,6 @@ class Task < ApplicationRecord
     in_progress: 'in_progress',
     complete: 'complete'
   }
+
+  validates :status, presence: true
 end

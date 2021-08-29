@@ -1,29 +1,17 @@
-<h1>Listing tasks</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Status</th>
-    <th>Project</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
 <% tasks.each do |task| %>
   <% if task.persisted? %>
-    <tr>
-      <td><%= task.name %></td>
-      <td><%= task.description %></td>
-      <td><%= task.status&.humanize %></td>
-      <td><%= task.project %></td>
-      <td><%= link_to 'Show', [task.project, task] %></td>
-      <td><%= link_to 'Edit', edit_project_task_path(task.project, task) %></td>
-      <td><%= link_to 'Destroy', [task.project, task], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
+    <div class="card">
+      <div class="card-body">
+        <span class="badge bg-primary"><%= task.status&.humanize %></span>
+        <h5 class="card-title d-flex justify-content-between mb-4">
+          <span><%= task.name %></span>
+          <div>
+            <%= link_to 'Edit', edit_project_task_path(task.project, task), class: 'btn btn-sm btn-warning' %>
+            <%= link_to 'Destroy', project_task_path(task.project, task), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
+          </div>
+        </h5>
+        <p><%= task.description %></p>
+      </div>
+    </div>
   <% end %>
 <% end %>
-</table>
-
-<br />

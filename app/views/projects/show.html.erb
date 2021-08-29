@@ -1,31 +1,24 @@
-<p id="notice"><%= notice %></p>
+<%= link_to 'Back', projects_path, class: 'btn btn-light mb-3' %>
 
-<p>
-  <strong>User:</strong>
-  <%= @project.user_id %>
-</p>
+<div class="card">
+  <div class="card-body">
+    <h2 class="card-title d-flex justify-content-between mb-4">
+      <span><%= @project.name %></span>
+      <div>
+        <%= link_to 'Edit', edit_project_path(@project), class: 'btn btn-warning' %>
+        <%= link_to 'Destroy', @project, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+      </div>
+    </h2>
 
-<p>
-  <strong>Name:</strong>
-  <%= @project.name %>
-</p>
+    <div class="mb-4">
+      <h6>Add task</h6>
+      <%= render 'projects/tasks/form' %>
+    </div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @project.description %>
-</p>
+    <h4>Tasks</h4>
+    <%= render 'projects/tasks/list', { tasks: @project.tasks, project: @project } %>
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+  </div>
+</div>
 
-<hr/>
-
-<h1>New task</h1>
-
-<%= render 'projects/tasks/form' %>
-
-<hr/>
-
-<%= render 'projects/tasks/list', { tasks: @project.tasks, project: @project } %>
-
-<hr/>
+</hr>
