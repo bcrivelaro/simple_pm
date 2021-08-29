@@ -1,0 +1,16 @@
+<div class="card mb-3">
+  <div class="card-body">
+    <div class="d-flex justify-content-between ">
+      <span class="badge bg-<%= badge_for(task) %> mb-3"><%= task.status&.humanize %></span>
+      <div>
+        <%= link_to 'Edit', edit_project_task_path(task.project, task), class: 'btn btn-sm btn-light' %>
+        <%= link_to 'Destroy', project_task_path(task.project, task), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-dark' %>
+      </div>
+    </div>
+    <h5 class="card-titlemb-2">
+      <span><%= task.name %></span>
+
+    </h5>
+    <p><%= task.description %></p>
+  </div>
+</div>

@@ -1,24 +1,46 @@
-<%= link_to 'Back', projects_path, class: 'btn btn-light mb-3' %>
+<%= link_to 'Back', projects_path, class: 'btn btn-secondary mb-3' %>
 
 <div class="card">
   <div class="card-body">
     <h2 class="card-title d-flex justify-content-between mb-4">
       <span><%= @project.name %></span>
       <div>
-        <%= link_to 'Edit', edit_project_path(@project), class: 'btn btn-warning' %>
-        <%= link_to 'Destroy', @project, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+        <%= link_to 'Edit', edit_project_path(@project), class: 'btn btn-light' %>
+        <%= link_to 'Destroy', @project, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-dark' %>
       </div>
     </h2>
 
     <div class="mb-4">
       <h6>Add task</h6>
-      <%= render 'projects/tasks/form' %>
+      <%= form_with(model: [@task.project, @task]) do |f| %>
+        <% if @task.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+            <ul>
+            <% @task.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <%= f.hidden_field :status, value: :not_started %>
+
+        <div class="input-group">
+          <%= f.text_field :name, placeholder: 'Task name', class: 'form-control', autofocus: true %>
+          <%= f.submit class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+
     </div>
 
     <h4>Tasks</h4>
-    <%= render 'projects/tasks/index', { tasks: @project.tasks, project: @project } %>
-
+    <% @project.tasks.each do |task| %>
+      <% if task.persisted? %>
+        <%= render 'projects/task', task: task %>
+      <% end %>
+    <% end %>
   </div>
 </div>
 
-</hr>

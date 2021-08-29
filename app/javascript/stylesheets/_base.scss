@@ -1,11 +1,7 @@
-body {
-  background-color: #eeeeee;
-}
+.project-card {
+  transition: background-color 0.1s ease;
 
-a {
-  text-decoration: none;
-
-  :hover {
-    text-decoration: underline;
+  &:hover {
+    background-color: #f7f7f7;
   }
 }
