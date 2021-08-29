@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :projects do
     scope module: :projects do
-      resources :tasks
+      resources :tasks, except: [:index]
     end
   end
 

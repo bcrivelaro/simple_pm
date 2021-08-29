@@ -12,8 +12,9 @@
   <% end %>
 
   <%= f.hidden_field :status, value: :not_started %>
+
   <div class="input-group">
-    <%= f.text_field :name, placeholder: 'Task name', class: 'form-control' %>
+    <%= f.text_field :name, placeholder: 'Task name', class: 'form-control', autofocus: true %>
     <%= f.submit class: 'btn btn-primary' %>
   </div>
 <% end %>

@@ -7,5 +7,6 @@ class Task < ApplicationRecord
     complete: 'complete'
   }
 
+  validates :name, presence: true
   validates :status, presence: true
 end
