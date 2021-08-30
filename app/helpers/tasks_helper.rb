@@ -1,5 +1,5 @@
 module TasksHelper
-  def badge_for(task)
+  def task_badge_color(task)
     return 'secondary' if task.not_started?
     return 'success' if task.complete?
 

@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: %i[ show edit update destroy ]
 
   def index
-    @projects = current_user.projects.all
+    @projects = current_user.projects.includes(:tasks).all
   end
 
   def show

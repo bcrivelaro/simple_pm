@@ -9,6 +9,17 @@
       <%= link_to project, class: 'text-decoration-none' do %>
         <div class="card project-card mb-3">
           <div class="card-body">
+            <div class="mb-3">
+              <span class="badge bg-<%= project_badge_color(project) %> mb-3">
+                <%= project.status.humanize %>
+              </span>
+              <span class="text-secondary">
+                <small>
+                  <%= number_to_percentage(project.percentage_complete, precision: 0) %> complete
+                  (<%= project.total_tasks_complete %>/<%= project.tasks.count %>)
+                </small>
+              </span>
+            </div>
             <h5 class="card-title text-dark"><b><%= project.name %></b></h5>
             <p class="text-secondary"><%= project.description %></p>
           </div>
