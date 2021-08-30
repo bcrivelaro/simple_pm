@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <%= link_to "Simple PM", root_path, class: 'navbar-brand' %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <%= link_to "Projects", projects_path, class: 'nav-link active', "aria-current": "page" %>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <% if user_signed_in? %>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: 'nav-link active' %>
+            </li>
+          </ul>
+        <% end %>
+      </form>
+    </div>
+  </div>
+</nav>
