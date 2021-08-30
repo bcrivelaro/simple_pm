@@ -36,11 +36,15 @@
     </div>
 
     <h4>Tasks</h4>
-    <% @project.tasks.each do |task| %>
-      <% if task.persisted? %>
-        <%= render 'projects/task', task: task %>
+    <ul id="tasks-list">
+      <% @project.tasks.each do |task| %>
+        <% if task.persisted? %>
+          <li>
+            <%= render 'projects/task', task: task %>
+          </li>
+        <% end %>
       <% end %>
-    <% end %>
+    </ul>
   </div>
 </div>
 

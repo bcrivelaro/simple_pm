@@ -5,3 +5,20 @@
     background-color: #f7f7f7;
   }
 }
+
+#tasks-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.task-status {
+  .grip {
+    font-size: 1.1rem;
+    cursor: url(https://ssl.gstatic.com/ui/v1/icons/mail/images/2/openhand.cur),
+      default !important;
+
+    &:active {
+      cursor: grabbing;
+    }
+  }
+}

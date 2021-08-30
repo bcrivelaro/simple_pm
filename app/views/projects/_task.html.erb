@@ -1,15 +1,34 @@
 <div class="card mb-3">
   <div class="card-body">
-    <div class="d-flex justify-content-between ">
-      <span class="badge bg-<%= task_badge_color(task) %> mb-3"><%= task.status&.humanize %></span>
+    <div class="d-flex justify-content-between">
+      <div class='task-status'>
+        <i class="fas fa-grip-vertical grip text-secondary me-1"></i>
+        <span class="badge bg-<%= task_class_color(task) %> mb-3"><%= task.status&.humanize %></span>
+      </div>
       <div>
-        <%= link_to 'Edit', edit_project_task_path(task.project, task), class: 'btn btn-sm btn-light' %>
-        <%= link_to 'Destroy', project_task_path(task.project, task), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-dark' %>
+        <div class="dropdown float-start">
+          <a class="btn btn-sm me-1 btn-outline-<%= task_class_color(task) %> dropdown-toggle" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+            <%= task.status.humanize %>
+          </a>
+
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <% Task.statuses.keys.each do |status| %>
+              <li><a class="dropdown-item" href="#"><%= status.humanize %></a></li>
+            <% end %>
+          </ul>
+        </div>
+        <%= link_to edit_project_task_path(task.project, task), class: 'btn btn-sm btn-light' do %>
+          <i class="far fa-edit"></i>
+        <% end %>
+        <%= link_to project_task_path(task.project, task), method: :delete,
+                                                           data: { confirm: 'Are you sure?' },
+                                                           class: 'btn btn-sm btn-dark' do %>
+          <i class="fas fa-trash"></i>
+        <% end %>
       </div>
     </div>
-    <h5 class="card-titlemb-2">
+    <h5 class="card-title mb-2">
       <span><%= task.name %></span>
-
     </h5>
     <p><%= task.description %></p>
   </div>
