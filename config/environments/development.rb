@@ -1,6 +1,8 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
+  config.session_store :cache_store
+
   config.after_initialize do
     Bullet.enable        = true
     Bullet.alert         = true
