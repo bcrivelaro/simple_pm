@@ -35,16 +35,44 @@
 
     </div>
 
-    <h4>Tasks</h4>
-    <ul id="tasks-list" data-controller="tasks">
-      <% @project.tasks.each do |task| %>
-        <% if task.persisted? %>
-          <li class="task-item" data-task-id="<%= task.id %>">
-            <%= render 'projects/task', task: task %>
-          </li>
+    <h4>Not Started</h4>
+    <div class="tasks-bg">
+      <ul class="tasks-list" data-status="not_started" data-controller="tasks">
+        <% @project.tasks.not_started.each do |task| %>
+          <% if task.persisted? %>
+            <li class="task-item" data-task-id="<%= task.id %>">
+              <%= render 'projects/task', task: task %>
+            </li>
+          <% end %>
         <% end %>
-      <% end %>
       </ul>
+    </div>
+
+    <h4>In progress</h4>
+    <div class="tasks-bg">
+      <ul class="tasks-list" data-status="in_progress" data-controller="tasks">
+        <% @project.tasks.in_progress.each do |task| %>
+          <% if task.persisted? %>
+            <li class="task-item" data-task-id="<%= task.id %>">
+              <%= render 'projects/task', task: task %>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+
+    <h4>Complete</h4>
+    <div class="tasks-bg">
+      <ul class="tasks-list" data-status="complete" data-controller="tasks">
+        <% @project.tasks.complete.each do |task| %>
+          <% if task.persisted? %>
+            <li class="task-item" data-task-id="<%= task.id %>">
+              <%= render 'projects/task', task: task %>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </div>
 

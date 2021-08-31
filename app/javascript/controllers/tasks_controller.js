@@ -7,13 +7,14 @@ import Sortable from 'sortablejs'
 export default class extends ApplicationController {
   connect() {
     super.connect()
-    this.sorotable = Sortable.create(this.element, {
+    this.sortable = Sortable.create(this.element, {
       animation: 150,
+      group: 'shared',
       onEnd: this.end.bind(this)
     })
   }
 
   end(event) {
-    this.stimulate("Tasks#sort", event.item.dataset.taskId, event.newIndex + 1)
+    this.stimulate("Tasks#sort", event.item.dataset.taskId, event.newIndex + 1, event.to.dataset.status)
   }
 }

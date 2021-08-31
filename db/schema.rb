@@ -28,8 +28,7 @@ ActiveRecord::Schema.define(version: 2021_08_31_010054) do
     t.integer "project_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "position", null: false
-    t.index ["project_id", "position"], name: "index_tasks_on_project_id_and_position", unique: true
+    t.integer "position", default: 0, null: false
     t.index ["project_id"], name: "index_tasks_on_project_id"
   end
 
