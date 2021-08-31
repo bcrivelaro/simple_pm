@@ -15,9 +15,4 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-document.addEventListener('turbolinks:load', () => {
-  let el = document.getElementById('tasks-list');
-  let sortable = Sortable.create(el, { animation: 150, });
-})
-
 import "controllers"

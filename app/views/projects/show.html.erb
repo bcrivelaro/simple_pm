@@ -36,15 +36,15 @@
     </div>
 
     <h4>Tasks</h4>
-    <ul id="tasks-list">
+    <ul id="tasks-list" data-controller="tasks">
       <% @project.tasks.each do |task| %>
         <% if task.persisted? %>
-          <li>
+          <li class="task-item" data-task-id="<%= task.id %>">
             <%= render 'projects/task', task: task %>
           </li>
         <% end %>
       <% end %>
-    </ul>
+      </ul>
   </div>
 </div>
 

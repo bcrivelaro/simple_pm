@@ -31,7 +31,6 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'devise'
 gem 'nested_scaffold'
 gem 'lograge'
-gem 'bullet'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -63,3 +62,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "stimulus_reflex", "~> 3.4"
+
+gem "acts_as_list", "~> 1.0"
